@@ -1,0 +1,56 @@
+# Archivos y carpetas generados por Rider
+.idea/
+
+# Archivos de compilación
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Otros archivos temporales
+*.log
+*.tmp
+*.cache
+*.user
+
+# Ignorar archivos y cachés generados automáticamente por .NET
+*.editorconfig
+
+# Archivos específicos generados por Rider o NuGet
+*.nuget.*
+*.dgspec.json
+*.props
+*.assets.cache
+*.AssemblyInfo.*
+*.AssemblyReference.*
+*.GeneratedMSBuildEditorConfig.*
+*.csproj.nuget.*
+*rider.project.*
+
+# Configuraciones locales sensibles
+appsettings.Development.json
+appsettings.Local.json
+.env
+secrets.json
+
+# Archivos de configuración de usuario
+*.sln.ide
+*.sln.ide.*
+
+# Otros archivos y carpetas comunes
+logs/
+.vs/
+*.suo
+*.userosscache
+publish/
+coverage/
+node_modules/
+
+# Ignorar contenido de wwwroot generado, pero mantener carpeta base
+/wwwroot/*
+!/wwwroot/favicon.ico
+!/wwwroot/css/
+/wwwroot/lib/
+
+# (Opcional) Ignorar migraciones si se generan por desarrollador
+# Migrations/
