@@ -2,5 +2,5 @@ namespace MyChamba.Data.Interface;
 
 public class GenericRepository
 {
-    // Patrick y Willians
+    // Patrick, Willians, Ribeyro
 }
