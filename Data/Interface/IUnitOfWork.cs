@@ -1,6 +1,6 @@
 namespace MyChamba.Data.UnitofWork;
 
-public class UnitofWork
+public interface IUnitOfWork
 {
-    //Patrick
+    
 }
