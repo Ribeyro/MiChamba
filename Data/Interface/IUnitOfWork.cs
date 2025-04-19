@@ -1,6 +1,10 @@
-namespace MyChamba.Data.UnitofWork;
+using MyChamba.Data.Interface;
 
-public interface IUnitOfWork
+namespace MyChamba.Data.UnitofWork
 {
-    
+    public interface IUnitOfWork : IDisposable
+    {
+        IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class;
+        Task<int> Complete();
+    }
 }
