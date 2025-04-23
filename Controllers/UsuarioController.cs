@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyChamba.DTOs.Register;
 using MyChamba.DTOs.Usuario;
 using MyChamba.Services.Interfaces;
 
@@ -15,10 +16,17 @@ public class UsuarioController : ControllerBase
         _usuarioService = usuarioService;
     }
 
-    [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+    [HttpPost("register/empresa")]
+    public async Task<IActionResult> RegisterEmpresa([FromBody] RegisterEmpresaRequest request)
     {
-        var result = await _usuarioService.RegistrarUsuarioAsync(request);
-        return CreatedAtAction(nameof(Register), new { id = result.Id }, result);
+        var result = await _usuarioService.RegistrarEmpresaAsync(request);
+        return CreatedAtAction(nameof(RegisterEmpresa), new { id = result.Id }, result);
+    }
+
+    [HttpPost("register/estudiante")]
+    public async Task<IActionResult> RegisterEstudiante([FromBody] RegisterEstudianteRequest request)
+    {
+        var result = await _usuarioService.RegistrarEstudianteAsync(request);
+        return CreatedAtAction(nameof(RegisterEstudiante), new { id = result.Id }, result);
     }
 }
