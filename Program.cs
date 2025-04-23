@@ -2,14 +2,21 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Data;
 using MyChamba.Data.UnitofWork;
+using MyChamba.Extensions;
 using MyChamba.Services.Implementations;
 using MyChamba.Services.Interfaces;
+using MyChamba.Helpers;
+using MyChamba.Middlewares;
+using MyChamba.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers(); // Add support for JSON responses
 builder.Services.AddSwaggerGen(); // Add Swagger for API testing
+
+
 
 // Add DbContext with connection string from appsettings.json
 builder.Services.AddDbContext<MyChambaContext>(options =>
@@ -18,10 +25,29 @@ builder.Services.AddDbContext<MyChambaContext>(options =>
 
 // Register UnitOfWork and Services
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+
 
 // Add password hasher for identity
 builder.Services.AddScoped<IPasswordHasher<MyChamba.Models.Usuario>, PasswordHasher<MyChamba.Models.Usuario>>();
+// Configuración JWT externalizada
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
+//Habilitar CORS correctamente
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000", "http://localhost:19006") // Next.js, Expo
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 
 var app = builder.Build();
 
@@ -35,8 +61,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseRouting();
-
+app.UseCors("AllowFrontend");
+app.UseAuthentication(); // ⬅️ Agrega esta línea antes de Authorization
 app.UseAuthorization();
 
 // Map API controllers
