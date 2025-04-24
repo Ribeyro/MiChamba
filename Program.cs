@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Data;
+using MyChamba.Data.UnitofWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Add DbContext with connection string from appsettings.json
 
 builder.Services.AddDbContext<MyChambaContext>(options =>
