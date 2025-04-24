@@ -4,19 +4,11 @@ namespace MyChamba.Data.Interface
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> GetByIdAsync(uint id);
-        Task<IEnumerable<TEntity>> GetAllAsync(string includeProperties);
-        Task<IEnumerable<TEntity>> GetAllAsync();
-
-        Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
-        Task AddAsync(TEntity entity);
-        
-        Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
-
-        void Update(TEntity entity);
-        void Delete(TEntity entity);
-        
-        // ✅ NUEVO MÉTODO
-        IQueryable<TEntity> GetAllAsQueryable();
+        Task<TEntity?> GetByIdAsync(int id); // Devuelve null si no se encuentra
+        Task<IEnumerable<TEntity>> GetAllAsync(); // Obtiene todos los registros
+        Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate); // Consulta personalizada
+        Task AddAsync(TEntity entity); // Agrega un nuevo registro
+        void Update(TEntity entity); // Actualiza un registro existente
+        void Delete(TEntity entity); // Elimina un registro
     }
 }
