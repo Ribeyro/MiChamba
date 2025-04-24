@@ -1,6 +1,6 @@
-namespace MyChamba.Services.Interfaces;
+using MyChamba.DTOs.Auth;
 
-public class IAuthService
+public interface IAuthService
 {
-    
+    Task<AuthResponse> LoginAsync(LoginRequest request);
 }
