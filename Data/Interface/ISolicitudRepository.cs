@@ -1,10 +1,12 @@
 using MyChamba.Models;
 using System.Threading.Tasks;
-using MyChamba.Data.Interface;
 
-namespace MyChamba.Data.UnitofWork;
-
-public interface ISolicitudRepository : IGenericRepository<Solicitude>
+namespace MyChamba.Data.Interface
 {
-    Task<Solicitude?> ObtenerPorEstudianteYProyectoAsync(ulong idEstudiante, uint idProyecto);
+    public interface ISolicitudRepository
+    {
+        Task<Solicitude?> ObtenerPorEstudianteYProyectoAsync(ulong idEstudiante, uint idProyecto);
+        Task AddAsync(Solicitude solicitud);
+        Task SaveChangesAsync();
+    }
 }

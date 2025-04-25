@@ -1,18 +1,14 @@
-using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Data.Interface;
-using MyChamba.Data.Repository;
-using MyChamba.Data.UnitofWork;
 using MyChamba.Models;
-
 
 namespace MyChamba.Data.Repositories
 {
-    public class SolicitudRepository : GenericRepository<Solicitude>, ISolicitudRepository
+    public class SolicitudRepository : ISolicitudRepository
     {
         private readonly MyChambaContext _context;
 
-        public SolicitudRepository(MyChambaContext context) : base(context)
+        public SolicitudRepository(MyChambaContext context)
         {
             _context = context;
         }
@@ -21,6 +17,16 @@ namespace MyChamba.Data.Repositories
         {
             return await _context.Solicitudes
                 .FirstOrDefaultAsync(s => s.IdEstudiante == idEstudiante && s.IdProyecto == idProyecto);
+        }
+
+        public async Task AddAsync(Solicitude solicitud)
+        {
+            await _context.Solicitudes.AddAsync(solicitud);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

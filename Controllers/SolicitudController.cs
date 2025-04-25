@@ -1,24 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using MyChamba.Data.UnitofWork;
 using MyChamba.DTOs.Solicitud;
-using MyChamba.Models;
-using Microsoft.EntityFrameworkCore;
+using MyChamba.Services.Interfaces;
 
-namespace MyChamba.Controllers
+namespace MyChamba.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SolicitudController : ControllerBase
+    public class SolicitudesController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ISolicitudService _solicitudService;
 
-        public SolicitudController(IUnitOfWork unitOfWork)
+        public SolicitudesController(ISolicitudService solicitudService)
         {
-            _unitOfWork = unitOfWork;
+            _solicitudService = solicitudService;
         }
 
-       
+        [HttpPost("solicitudes")]
+        public async Task<IActionResult> CrearSolicitud([FromBody] CrearSolicitudDto dto)
+        {
+            try
+            {
+                var respuesta = await _solicitudService.CrearSolicitudAsync(dto);
+                return CreatedAtAction(nameof(CrearSolicitud), new { id = respuesta.Id }, respuesta);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno: {ex.Message}");
+            }
+        }
     }
 }
