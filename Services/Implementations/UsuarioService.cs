@@ -82,6 +82,24 @@ public async Task<UsuarioResponse> RegistrarEstudianteAsync(RegisterEstudianteRe
 
     await _unitOfWork.Repository<Estudiante>().AddAsync(estudiante);
     await _unitOfWork.Complete();
+    
+    // Registrar idiomas si existen
+    if (request.Estudiante.Idiomas != null && request.Estudiante.Idiomas.Any())
+    {
+        foreach (var idioma in request.Estudiante.Idiomas)
+        {
+            var estudianteIdioma = new EstudianteIdioma
+            {
+                IdEstudiante = usuario.Id,
+                IdIdioma = idioma.IdIdioma,
+                Nivel = idioma.Nivel
+            };
+
+            await _unitOfWork.Repository<EstudianteIdioma>().AddAsync(estudianteIdioma);
+        }
+
+        await _unitOfWork.Complete();
+    }
 
     return new UsuarioResponse
     {
