@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Data;
+using MyChamba.Data.Repositories;
+using MyChamba.Data.Repositories.Student;
 using MyChamba.Data.UnitofWork;
 using MyChamba.Extensions;
 using MyChamba.Services.Implementations;
@@ -8,6 +10,7 @@ using MyChamba.Services.Interfaces;
 using MyChamba.Helpers;
 using MyChamba.Middlewares;
 using MyChamba.Repositories;
+using MyChamba.Services.Implementations.Student;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +32,13 @@ builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+
+
+
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+
 
 
 
