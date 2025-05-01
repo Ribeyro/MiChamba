@@ -7,11 +7,11 @@ namespace MyChamba.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UsuarioController : ControllerBase
+public class UserRegisterController : ControllerBase
 {
     private readonly IUsuarioService _usuarioService;
 
-    public UsuarioController(IUsuarioService usuarioService)
+    public UserRegisterController(IUsuarioService usuarioService)
     {
         _usuarioService = usuarioService;
     }
