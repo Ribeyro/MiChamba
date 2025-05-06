@@ -1,24 +1,35 @@
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using MyChamba.Data.UnitofWork;
 using MyChamba.DTOs.Solicitud;
-using MyChamba.Models;
-using Microsoft.EntityFrameworkCore;
+using MyChamba.Services.Interfaces;
 
-namespace MyChamba.Controllers
+namespace MyChamba.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class SolicitudesController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SolicitudController : ControllerBase
+    private readonly ISolicitudService _solicitudService;
+
+    public SolicitudesController(ISolicitudService solicitudService)
     {
-        private readonly IUnitOfWork _unitOfWork;
+        _solicitudService = solicitudService;
+    }
 
-        public SolicitudController(IUnitOfWork unitOfWork)
+    [HttpPost]
+    public async Task<IActionResult> Postular([FromBody] CrearSolicitudDto dto)
+    {
+        try
         {
-            _unitOfWork = unitOfWork;
-        }
+            var resultado = await _solicitudService.PostularEstudianteAsync(dto);
 
-       
+            if (resultado)
+                return Ok(new { mensaje = "Postulación registrada correctamente." });
+
+            return BadRequest(new { mensaje = "No se pudo registrar la postulación." });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensaje = ex.Message });
+        }
     }
 }
