@@ -22,5 +22,10 @@ namespace MyChamba.Services.Implementations
             var postulantes = await _postulanteRepository.ObtenerPostulantesPorProyectoAsync(idProyecto);
             return postulantes;
         }
+        
+        public async Task AceptarPostulanteAsync(uint idSolicitud)
+        {
+            await _postulanteRepository.AceptarPostulanteAsync(idSolicitud);
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace MyChamba.Data.Repositories
     public interface IPostulanteRepository
     {
         Task<List<PostulanteDto>> ObtenerPostulantesPorProyectoAsync(uint idProyecto);
+        Task AceptarPostulanteAsync(uint idSolicitud);
     }
 }

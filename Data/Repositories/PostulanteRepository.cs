@@ -30,6 +30,7 @@ namespace MyChamba.Data.Repositories
                 where s.IdProyecto == idProyecto
                 select new PostulanteDto
                 {
+                    IdSolicitud = s.Id, // <-- Agregado
                     IdUsuario = u.Id,
                     NombreCompleto = e.Nombre + " " + e.Apellido,
                     Email = u.Email,
@@ -40,6 +41,55 @@ namespace MyChamba.Data.Repositories
                 };
 
             return await query.ToListAsync();
+        }
+        
+        public async Task AceptarPostulanteAsync(uint idSolicitud)
+        {
+            // Obtener la solicitud aceptada
+            var solicitudAceptada = await _context.Solicitudes
+                .FirstOrDefaultAsync(s => s.Id == idSolicitud);
+
+            if (solicitudAceptada == null)
+                throw new Exception("Solicitud no encontrada.");
+
+            // Obtener todas las demás solicitudes del mismo proyecto
+            var otrasSolicitudes = await _context.Solicitudes
+                .Where(s => s.IdProyecto == solicitudAceptada.IdProyecto && s.Id != idSolicitud)
+                .ToListAsync();
+
+            // Cambiar estado de la solicitud aceptada
+            solicitudAceptada.Estado = "aceptada";
+
+            // Cambiar estado del resto y preparar notificaciones
+            var notificaciones = new List<Notificacione>();
+            foreach (var s in otrasSolicitudes)
+            {
+                s.Estado = "rechazada";
+                notificaciones.Add(new Notificacione()
+                {
+                    IdReceptor = s.IdEstudiante,
+                    IdSolicitud = s.Id,
+                    Mensaje = "No has sido seleccionado para el reto.",
+                    TipoMensaje = "Postulación",
+                    FechaEnvio = DateTime.UtcNow,
+                    Leido = false
+                });
+            }
+
+            // Notificar al estudiante aceptado
+            notificaciones.Add(new Notificacione()
+            {
+                IdReceptor = solicitudAceptada.IdEstudiante,
+                IdSolicitud = solicitudAceptada.Id,
+                Mensaje = "¡Felicidades! Has sido seleccionado para el reto.",
+                TipoMensaje = "Postulación",
+                FechaEnvio = DateTime.UtcNow,
+                Leido = false
+            });
+
+            // Guardar cambios
+            _context.Notificaciones.AddRange(notificaciones);
+            await _context.SaveChangesAsync();
         }
     }
 }

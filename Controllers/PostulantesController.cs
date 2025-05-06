@@ -25,5 +25,19 @@ namespace MyChamba.Controllers
             }
             return Ok(postulantes);
         }
+        
+        [HttpPost("aceptar/{idSolicitud}")]
+        public async Task<IActionResult> AceptarPostulante(uint idSolicitud)
+        {
+            try
+            {
+                await _postulanteService.AceptarPostulanteAsync(idSolicitud);
+                return Ok("Postulante aceptado y notificaciones enviadas.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
