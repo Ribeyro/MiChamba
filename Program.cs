@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Data;
-using MyChamba.Data.Interface;
 using MyChamba.Data.Repositories;
+using MyChamba.Data.Repositories.Student;
+using MyChamba.Data.Interface;
+
 using MyChamba.Data.UnitofWork;
 using MyChamba.Extensions;
 using MyChamba.Services.Implementations;
@@ -10,6 +12,7 @@ using MyChamba.Services.Interfaces;
 using MyChamba.Helpers;
 using MyChamba.Middlewares;
 using MyChamba.Repositories;
+using MyChamba.Services.Implementations.Student;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,8 +37,9 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IProyectoRepository, ProyectoRepository>();
 builder.Services.AddScoped<IProyectoService, ProyectoService>();
 builder.Services.AddScoped<ISolicitudService, SolicitudService>(); //Patrick - nuevo
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 
-    
 // Add password hasher for identity
 builder.Services.AddScoped<IPasswordHasher<MyChamba.Models.Usuario>, PasswordHasher<MyChamba.Models.Usuario>>();
 // Configuración JWT externalizada
