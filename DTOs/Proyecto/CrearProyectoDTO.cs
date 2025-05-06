@@ -1,10 +1,12 @@
-public class CrearProyectoDto
+namespace MyChamba.DTOs.Proyecto;
+
+public class CrearProyectoDTO
 {
-    public string Nombre { get; set; } = null!;
+    public ulong IdEmpresa { get; set; } // El id de la empresa que crea el proyecto
+    public string Titulo { get; set; } = null!;
     public string Descripcion { get; set; } = null!;
-    
-    public string FechaLimite { get; set; } = null!; // <--dia/mes/año
-    public int NumeroParticipantes { get; set; }
-    public uint IdTipoRecompensa { get; set; }
-    public ulong IdEmpresa { get; set; }  // este es el IdUsuario de la empresa
+    public DateTime FechaLimite { get; set; }
+    public uint TipoRecompensa { get; set; }
+
+    public List<uint> IdHabilidades { get; set; } = new(); // IDs de habilidades asociadas
 }

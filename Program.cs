@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using MyChamba.Data;
 using MyChamba.Data.Repositories;
 using MyChamba.Data.Repositories.Student;
+using MyChamba.Data.Interface;
+
 using MyChamba.Data.UnitofWork;
 using MyChamba.Extensions;
 using MyChamba.Services.Implementations;
@@ -32,6 +34,9 @@ builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IProyectoRepository, ProyectoRepository>();
+builder.Services.AddScoped<IProyectoService, ProyectoService>();
+
 
 
 
