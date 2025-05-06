@@ -41,6 +41,9 @@ builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<INotificacionService, NotificacionService>(); //Patrick - nuevo
 
+builder.Services.AddScoped<IPostulanteRepository, PostulanteRepository>();
+builder.Services.AddScoped<IPostulanteService, PostulanteService>();
+
 // Add password hasher for identity
 builder.Services.AddScoped<IPasswordHasher<MyChamba.Models.Usuario>, PasswordHasher<MyChamba.Models.Usuario>>();
 // Configuración JWT externalizada
