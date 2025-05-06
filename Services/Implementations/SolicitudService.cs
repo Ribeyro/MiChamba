@@ -3,15 +3,18 @@ using MyChamba.DTOs.Solicitud;
 using MyChamba.Models;
 using MyChamba.Services.Interfaces;
 
+
 namespace MyChamba.Services.Implementations;
 
 public class SolicitudService : ISolicitudService
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly INotificacionService _notificacionService;
 
-    public SolicitudService(IUnitOfWork unitOfWork)
+    public SolicitudService(IUnitOfWork unitOfWork, INotificacionService notificacionService)
     {
         _unitOfWork = unitOfWork;
+        _notificacionService = notificacionService;
     }
 
     public async Task<bool> PostularEstudianteAsync(CrearSolicitudDto dto)
@@ -45,7 +48,14 @@ public class SolicitudService : ISolicitudService
 
         await _unitOfWork.Repository<Solicitude>().AddAsync(solicitud);
         await _unitOfWork.Complete();
+        
+        
+        // Obtener ID del usuario empresa dueña del proyecto
+        ulong idEmpresa = proyecto.IdEmpresa; // Asegúrate que el modelo Proyecto tenga esta propiedad
 
+        // Crear la notificación
+        await _notificacionService.CrearNotificacionNuevaSolicitudAsync(solicitud, idEmpresa, dto.ResumenHabilidades);
+        
         return true;
     }
 }
