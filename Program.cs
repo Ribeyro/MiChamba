@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Data;
+using MyChamba.Data.Context;
 using MyChamba.Data.Repositories;
 using MyChamba.Data.Repositories.Student;
 using MyChamba.Data.Interface;
-
 using MyChamba.Data.UnitofWork;
 using MyChamba.Extensions;
 using MyChamba.Services.Implementations;
@@ -20,7 +20,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers(); // Add support for JSON responses
 builder.Services.AddSwaggerGen(); // Add Swagger for API testing
-
 
 
 // Add DbContext with connection string from appsettings.json
@@ -39,6 +38,8 @@ builder.Services.AddScoped<IProyectoService, ProyectoService>();
 builder.Services.AddScoped<ISolicitudService, SolicitudService>(); //Patrick - nuevo
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IVerificacionService, VerificacionService>();
+
 
 // Add password hasher for identity
 builder.Services.AddScoped<IPasswordHasher<MyChamba.Models.Usuario>, PasswordHasher<MyChamba.Models.Usuario>>();

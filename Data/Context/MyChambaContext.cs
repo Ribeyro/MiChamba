@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MyChamba.Models;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
-namespace MyChamba.Data;
+namespace MyChamba.Data.Context;
 
 public partial class MyChambaContext : DbContext
 {
@@ -58,7 +58,11 @@ public partial class MyChambaContext : DbContext
     public virtual DbSet<Universidad> Universidads { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
-    
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseMySql("server=localhost;database=dbsistem;user=root;password=123456", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.41-mysql"));
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -604,6 +608,7 @@ public partial class MyChambaContext : DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(150)
                 .HasColumnName("email");
+            entity.Property(e => e.EmailVerificado).HasColumnName("email_verificado");
             entity.Property(e => e.Estado).HasColumnName("estado");
             entity.Property(e => e.FechaCreacion)
                 .HasColumnType("datetime")
@@ -615,6 +620,9 @@ public partial class MyChambaContext : DbContext
             entity.Property(e => e.Tipo)
                 .HasMaxLength(50)
                 .HasColumnName("tipo");
+            entity.Property(e => e.TokenVerificacion)
+                .HasColumnType("text")
+                .HasColumnName("token_verificacion");
 
             entity.HasOne(d => d.IdTipoUsuarioNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdTipoUsuario)

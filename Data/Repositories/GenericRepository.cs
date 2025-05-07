@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using MyChamba.Data.Context;
 using MyChamba.Data.Interface;
 
 namespace MyChamba.Data.Repository

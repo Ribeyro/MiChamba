@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Data;
+using MyChamba.Data.Context;
 using MyChamba.Data.Repository;
 using MyChamba.Data.UnitofWork;
 using MyChamba.Models;

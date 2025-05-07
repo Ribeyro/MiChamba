@@ -19,6 +19,10 @@ public partial class Usuario
 
     public DateTime FechaCreacion { get; set; }
 
+    public bool EmailVerificado { get; set; }
+
+    public string? TokenVerificacion { get; set; }
+
     public virtual Empresa? Empresa { get; set; }
 
     public virtual Estudiante? Estudiante { get; set; }
