@@ -21,7 +21,7 @@ public class NotificacionService : INotificacionService
             IdSolicitud = solicitud.Id,
             IdReceptor = idEmpresa,
             TipoMensaje = "nueva_solicitud",
-            FechaEnvio = DateTime.UtcNow,
+            FechaEnvio = DateTime.Now,
             Mensaje = resumenHabilidades,
             Leido = false
         };
@@ -53,14 +53,21 @@ public class NotificacionService : INotificacionService
 
         var notificaciones = await _unitOfWork.Repository<Notificacione>()
             .FindAsync(n => solicitudesIds.Contains(n.IdSolicitud));
+        
+        var solicitudesDict = solicitudes.ToDictionary(s => s.Id, s => s);
 
         return notificaciones.Select(n => new NotificacionDto
         {
             Id = n.Id,
+            IdReceptor = n.IdReceptor,
+            IdSolicitud = n.IdSolicitud,
             TipoMensaje = n.TipoMensaje,
             Mensaje = n.Mensaje,
             FechaEnvio = n.FechaEnvio,
             Leido = n.Leido,
+            IdProyecto = solicitudesDict.TryGetValue(n.IdSolicitud, out var solicitud)
+                ? solicitud.IdProyecto
+                : 0
         }).ToList();
     }
 }
