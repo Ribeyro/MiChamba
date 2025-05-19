@@ -21,7 +21,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /out ./
 
-# Expone el puerto esperado por Railway
+# Configurar puerto esperado por Railway
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 
