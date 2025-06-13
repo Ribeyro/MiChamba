@@ -1,4 +1,4 @@
-using MyChamba.Data.Repositories.Student;
+using MyChamba.Domain.Interface;
 using MyChamba.DTOs.Proyecto;
 using MyChamba.Services.Interfaces;
 

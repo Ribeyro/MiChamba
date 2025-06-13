@@ -1,8 +1,10 @@
-using Microsoft.EntityFrameworkCore;
-using MyChamba.Models;
-using MyChamba.DTOs.Proyecto;
 
-namespace MyChamba.Data.Repositories.Student;
+using Microsoft.EntityFrameworkCore;
+using MyChamba.Data;
+using MyChamba.Domain.Entities;
+using MyChamba.Domain.Interface;
+
+namespace MyChamba.Infrastructure.Data.Repositories;
 
 public class StudentRepository : IStudentRepository
 {

@@ -1,4 +1,4 @@
-using MyChamba.DTOs.Proyecto;
+using MyChamba.Domain.Entities;
 
 namespace MyChamba.Data.Interface;
 

@@ -1,7 +1,6 @@
 using MyChamba.Application.DTOs.Student;
-using MyChamba.DTOs.Student;
 
-namespace MyChamba.Application.Services.Interfaces
+namespace MyChamba.Services.Interfaces
 {
     public interface IPostulanteService
     {

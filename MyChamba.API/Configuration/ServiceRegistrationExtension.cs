@@ -4,7 +4,6 @@ using MyChamba.Application.Services.Implementations;
 using MyChamba.Application.Services.Interfaces;
 using MyChamba.Data.Interface;
 using MyChamba.Data.Repositories;
-using MyChamba.Data.Repositories.Student;
 using MyChamba.Data.UnitofWork;
 using MyChamba.Domain.Interface;
 using MyChamba.Domain.Models;

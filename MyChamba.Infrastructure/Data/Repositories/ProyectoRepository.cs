@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using MyChamba.Data;
 using MyChamba.Data.Interface;
-using MyChamba.DTOs.Proyecto;
+using MyChamba.Domain.Entities;
 
-namespace MyChamba.Data.Repositories;
+
+namespace MyChamba.Infrastructure.Data.Repositories;
 
 public class ProyectoRepository: IProyectoRepository
 {

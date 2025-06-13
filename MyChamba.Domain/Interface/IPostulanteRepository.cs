@@ -1,5 +1,5 @@
-using MyChamba.Application.DTOs.Student;
-using MyChamba.DTOs.Student;
+
+using MyChamba.Domain.Entities;
 using MyChamba.Infrastructure.Models;
 using MyChamba.Models;
 

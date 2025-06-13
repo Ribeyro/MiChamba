@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Configuration;
 using MyChamba.Data;
-using MyChamba.Data.Repositories;
-using MyChamba.Data.Repositories.Student;
 using MyChamba.Data.Interface;
 using MyChamba.Data.UnitofWork;
 using MyChamba.Domain.Interface;

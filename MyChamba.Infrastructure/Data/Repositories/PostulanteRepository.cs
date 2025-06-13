@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using MyChamba.Application.DTOs.Student;
+
 using MyChamba.Data;
-using MyChamba.Data.Repositories;
+using MyChamba.Domain.Entities;
 using MyChamba.Domain.Interface;
 using MyChamba.DTOs.Student;
 using MyChamba.Infrastructure.Models;

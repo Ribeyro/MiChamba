@@ -10,4 +10,8 @@
       <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MyChamba.Domain\MyChamba.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -2,6 +2,7 @@ using MyChamba.Application.DTOs.Student;
 using MyChamba.Application.Services.Interfaces;
 using MyChamba.Domain.Interface;
 using MyChamba.Models;
+using MyChamba.Services.Interfaces;
 
 namespace MyChamba.Services.Implementations
 {
