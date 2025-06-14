@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using MyChamba.Infrastructure.Models;
+﻿using MyChamba.Infrastructure.Models;
 
 namespace MyChamba.Models;
 
-public partial class Sector
+public class Sector
 {
     public uint Id { get; set; }
 

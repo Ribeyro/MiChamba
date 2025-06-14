@@ -21,4 +21,3 @@ public class SolicitudRepository : GenericRepository<Solicitude>, ISolicitudRepo
             .FirstOrDefaultAsync(s => s.IdEstudiante == idEstudiante && s.IdProyecto == idProyecto);
     }
 }
-

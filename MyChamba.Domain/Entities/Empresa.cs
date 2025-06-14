@@ -3,7 +3,7 @@ using MyChamba.Models;
 
 namespace MyChamba.Infrastructure.Models;
 
-public partial class Empresa
+public class Empresa
 {
     public ulong IdUsuario { get; set; }
 

@@ -5,7 +5,7 @@ using MyChamba.DTOs.Proyecto;
 
 namespace MyChamba.Infrastructure.Data.Repositories;
 
-public class ProyectoRepository (MyChambaContext _context): IProyectoRepository
+public class ProyectoRepository(MyChambaContext _context) : IProyectoRepository
 {
     public async Task<IEnumerable<ProyectoEmpresaDTO>> ObtenerProyectosPorEmpresaAsync(uint idEmpresa)
     {
@@ -34,8 +34,6 @@ public class ProyectoRepository (MyChambaContext _context): IProyectoRepository
                 Carrera = s.IdEstudianteNavigation.IdCarreraNavigation.Nombre,
                 EstadoSolicitud = s.Estado
             }).ToList()
-
         }).ToList();
     }
-
 }

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using MyChamba.Application.UseCases.Usuarios.CrearUsuario;
 using MyChamba.DTOs.Register;
-using MyChamba.DTOs.Usuario;
-using MyChamba.Services.Interfaces;
+
 
 namespace MyChamba.Controllers;
 
@@ -9,9 +9,9 @@ namespace MyChamba.Controllers;
 [Route("api/[controller]")]
 public class UserRegisterController : ControllerBase
 {
-    private readonly IUsuarioService _usuarioService;
+    private readonly ICrearUsuarioUseCase _usuarioService;
 
-    public UserRegisterController(IUsuarioService usuarioService)
+    public UserRegisterController(ICrearUsuarioUseCase usuarioService)
     {
         _usuarioService = usuarioService;
     }

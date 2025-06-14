@@ -1,41 +1,37 @@
 using Microsoft.AspNetCore.Mvc;
-using MyChamba.Services.Interfaces;
+using MyChamba.Application.UseCases.Postulaciones.AceptarPostulante;
+using MyChamba.Application.UseCases.Postulaciones.ObtenerPostulantes;
 
-namespace MyChamba.Controllers
+namespace MyChamba.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class PostulantesController(
+    IObtenerPostulantesPorProyectoUseCase obtenerPostulantesUseCase,
+    IAceptarPostulanteUseCase aceptarPostulanteUseCase
+) : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class PostulantesController : ControllerBase
+    [HttpGet("proyecto/{idProyecto}/postulantes")]
+    public async Task<IActionResult> ObtenerPostulantesPorProyecto(uint idProyecto)
     {
-        private readonly IPostulanteService _postulanteService;
+        var postulantes = await obtenerPostulantesUseCase.ExecuteAsync(idProyecto);
+        if (postulantes == null || postulantes.Count == 0)
+            return NotFound("No se encontraron postulantes para este proyecto.");
 
-        public PostulantesController(IPostulanteService postulanteService)
-        {
-            _postulanteService = postulanteService;
-        }
+        return Ok(postulantes);
+    }
 
-        [HttpGet("proyecto/{idProyecto}/postulantes")]
-        public async Task<IActionResult> ObtenerPostulantesPorProyecto(uint idProyecto)
+    [HttpPost("aceptar/{idSolicitud}")]
+    public async Task<IActionResult> AceptarPostulante(uint idSolicitud)
+    {
+        try
         {
-            var postulantes = await _postulanteService.ObtenerPostulantesPorProyectoAsync(idProyecto);
-            if (postulantes == null || postulantes.Count == 0)
-            {
-                return NotFound("No se encontraron postulantes para este proyecto.");
-            }
-            return Ok(postulantes);
+            await aceptarPostulanteUseCase.ExecuteAsync(idSolicitud);
+            return Ok("Postulante aceptado y notificaciones enviadas.");
         }
-        [HttpPost("aceptar/{idSolicitud}")]
-        public async Task<IActionResult> AceptarPostulante(uint idSolicitud)
+        catch (Exception ex)
         {
-            try
-            {
-                await _postulanteService.AceptarPostulanteAsync(idSolicitud);
-                return Ok("Postulante aceptado y notificaciones enviadas.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(ex.Message);
         }
     }
 }

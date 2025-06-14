@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using MyChamba.Domain.Models;
+﻿using MyChamba.Domain.Models;
 
 namespace MyChamba.Models;
 
-public partial class TipoUsuario
+public class TipoUsuario
 {
     public ulong Id { get; set; }
 

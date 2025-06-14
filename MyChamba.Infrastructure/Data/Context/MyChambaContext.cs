@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyChamba.Domain.Models;
 using MyChamba.Infrastructure.Models;
 using MyChamba.Models;
-using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
 namespace MyChamba.Data;
 
@@ -60,7 +57,7 @@ public partial class MyChambaContext : DbContext
     public virtual DbSet<Universidad> Universidads { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder

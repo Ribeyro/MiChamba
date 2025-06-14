@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using MyChamba.Application.UseCases.Auth.Login;
 using MyChamba.DTOs.Auth;
-using MyChamba.Services.Interfaces;
-
 
 namespace MyChamba.Controllers;
 
@@ -9,9 +8,10 @@ namespace MyChamba.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly IAuthService _authService;
+    private readonly ILoginUseCase _authService;
 
-    public AuthController(IAuthService authService)
+    // 🔧 Constructor necesario para que ASP.NET Core pueda inyectar el servicio
+    public AuthController(ILoginUseCase authService)
     {
         _authService = authService;
     }
@@ -19,8 +19,14 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        var result = await _authService.LoginAsync(request);
-
-        return Ok(result);
+        try
+        {
+            var result = await _authService.LoginAsync(request);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Error en login: {ex.Message}");
+        }
     }
 }

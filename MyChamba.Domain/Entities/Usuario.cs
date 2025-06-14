@@ -3,7 +3,7 @@ using MyChamba.Models;
 
 namespace MyChamba.Domain.Models;
 
-public partial class Usuario
+public class Usuario
 {
     public ulong Id { get; set; }
 
@@ -22,7 +22,7 @@ public partial class Usuario
     public virtual Empresa? Empresa { get; set; }
 
     public virtual Estudiante? Estudiante { get; set; }
-
+  
     public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; } = null!;
 
     public virtual ICollection<Notificacione> Notificaciones { get; set; } = new List<Notificacione>();

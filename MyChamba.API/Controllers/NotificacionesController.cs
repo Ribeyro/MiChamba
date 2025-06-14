@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using MyChamba.Services.Interfaces;
+using MyChamba.Application.UseCases.Notificaciones.CrearNotificacion;
 
 namespace MyChamba.Controllers;
 
@@ -7,9 +7,9 @@ namespace MyChamba.Controllers;
 [Route("api/[controller]")]
 public class NotificacionesController : ControllerBase
 {
-    private readonly INotificacionService _notificacionService;
+    private readonly ICrearNotificacionUseCase _notificacionService;
 
-    public NotificacionesController(INotificacionService notificacionService)
+    public NotificacionesController(ICrearNotificacionUseCase notificacionService)
     {
         _notificacionService = notificacionService;
     }

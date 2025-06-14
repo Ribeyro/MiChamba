@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace MyChamba.Models;
 
-namespace MyChamba.Models;
-
-public partial class Link
+public class Link
 {
     public uint Id { get; set; }
 

@@ -1,18 +1,19 @@
+using MyChamba.Application.Configuration;
 using MyChamba.Configuration;
 using MyChamba.Extensions;
 using MyChamba.Middlewares;
-
+using MyChamba.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Centralización de configuración (infraestructura y más)
-builder.Services.AddApplicationServices(builder.Configuration);
-
-
-// Register UnitOfWork and Services
+// 🔧 Agrega primero los servicios de infraestructura (repos, DB, UnitOfWork, etc.)
+//builder.Services.AddApplicationServices(); // Sin parámetros
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddProjectServices(builder.Configuration);
+// 🔧 Luego los servicios de aplicación (casos de uso, JWT, etc.)
 
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
@@ -22,14 +23,14 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins("http://localhost:3000", "http://localhost:19006", "https://fullchamba.netlify.app")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
 
-// Global error logging middleware
+// Middleware pipeline
 app.Use(async (context, next) =>
 {
     try
@@ -43,14 +44,12 @@ app.Use(async (context, next) =>
     }
 });
 
-// Middleware pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
-// app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseRouting();

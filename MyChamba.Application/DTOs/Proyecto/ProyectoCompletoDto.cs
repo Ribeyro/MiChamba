@@ -8,5 +8,4 @@ public class ProyectoCompletoDto
     public DateTime FechaLimite { get; set; }
     public string? TipoRecompensa { get; set; }
     public List<HabilidadDto> Habilidades { get; set; } = new();
-
 }

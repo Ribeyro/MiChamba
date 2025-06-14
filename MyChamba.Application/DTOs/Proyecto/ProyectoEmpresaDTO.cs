@@ -7,6 +7,6 @@ public class ProyectoEmpresaDTO
     public string Descripcion { get; set; } = null!;
     public DateTime FechaLimite { get; set; }
     public int NumeroPostulaciones { get; set; }
-    
-    public List<PostulanteProyectoDTO> Postulantes { get; set; } = new(); 
+
+    public List<PostulanteProyectoDTO> Postulantes { get; set; } = new();
 }

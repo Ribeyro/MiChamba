@@ -2,7 +2,7 @@
 
 namespace MyChamba.Infrastructure.Models;
 
-public partial class Solicitude
+public class Solicitude
 {
     public uint Id { get; set; }
 

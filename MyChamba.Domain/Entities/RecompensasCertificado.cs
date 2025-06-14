@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace MyChamba.Models;
 
-namespace MyChamba.Models;
-
-public partial class RecompensasCertificado
+public class RecompensasCertificado
 {
     public uint IdRecompensa { get; set; }
 

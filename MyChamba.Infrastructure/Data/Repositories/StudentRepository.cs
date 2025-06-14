@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Data;
@@ -36,9 +37,10 @@ public class StudentRepository : IStudentRepository
         }).ToList();
     }
 
-    public async Task<List<ProyectoCompletoDto>> ObtenerProyectosFiltradosAsync(string fechaTexto, uint? idEmpresa = null)
+    public async Task<List<ProyectoCompletoDto>> ObtenerProyectosFiltradosAsync(string fechaTexto,
+        uint? idEmpresa = null)
     {
-        if (!DateTime.TryParseExact(fechaTexto, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
+        if (!DateTime.TryParseExact(fechaTexto, "dd/MM/yyyy", null, DateTimeStyles.None, out var fecha))
             throw new ArgumentException("La fecha debe estar en el formato dd/MM/yyyy.");
 
         var proyectos = await _context.Proyectos
@@ -47,10 +49,7 @@ public class StudentRepository : IStudentRepository
             .Include(p => p.IdHabilidads)
             .ToListAsync();
 
-        if (idEmpresa.HasValue)
-        {
-            proyectos = proyectos.Where(p => p.IdEmpresa == idEmpresa.Value).ToList();
-        }
+        if (idEmpresa.HasValue) proyectos = proyectos.Where(p => p.IdEmpresa == idEmpresa.Value).ToList();
 
         return proyectos.Select(p => new ProyectoCompletoDto
         {

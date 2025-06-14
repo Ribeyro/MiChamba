@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using MyChamba.Application.UseCases.Postulaciones.PostularEstudiante;
 using MyChamba.DTOs.Solicitud;
-using MyChamba.Services.Interfaces;
 
 namespace MyChamba.Controllers;
 
@@ -8,9 +8,9 @@ namespace MyChamba.Controllers;
 [Route("api/[controller]")]
 public class SolicitudesController : ControllerBase
 {
-    private readonly ISolicitudService _solicitudService;
+    private readonly IPostularEstudianteUseCase _solicitudService;
 
-    public SolicitudesController(ISolicitudService solicitudService)
+    public SolicitudesController(IPostularEstudianteUseCase solicitudService)
     {
         _solicitudService = solicitudService;
     }

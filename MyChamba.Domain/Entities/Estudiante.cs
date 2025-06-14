@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using MyChamba.Domain.Models;
+﻿using MyChamba.Domain.Models;
 using MyChamba.Infrastructure.Models;
 
 namespace MyChamba.Models;
 
-public partial class Estudiante
+public class Estudiante
 {
     public ulong IdUsuario { get; set; }
 
@@ -21,7 +19,8 @@ public partial class Estudiante
 
     public virtual ICollection<EntregasProyecto> EntregasProyectos { get; set; } = new List<EntregasProyecto>();
 
-    public virtual ICollection<EstudianteHabilidad> EstudianteHabilidads { get; set; } = new List<EstudianteHabilidad>();
+    public virtual ICollection<EstudianteHabilidad> EstudianteHabilidads { get; set; } =
+        new List<EstudianteHabilidad>();
 
     public virtual ICollection<EstudianteIdioma> EstudianteIdiomas { get; set; } = new List<EstudianteIdioma>();
 

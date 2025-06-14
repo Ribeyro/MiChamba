@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using MyChamba.Infrastructure.Models;
+﻿using MyChamba.Infrastructure.Models;
 
 namespace MyChamba.Models;
 
-public partial class Proyecto
+public class Proyecto
 {
     public uint Id { get; set; }
 

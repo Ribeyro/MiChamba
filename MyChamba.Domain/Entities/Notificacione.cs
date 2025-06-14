@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using MyChamba.Domain.Models;
+﻿using MyChamba.Domain.Models;
 using MyChamba.Infrastructure.Models;
 
 namespace MyChamba.Models;
 
-public partial class Notificacione
+public class Notificacione
 {
     public uint Id { get; set; }
 

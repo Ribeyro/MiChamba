@@ -31,7 +31,8 @@ public class EntregaController : ControllerBase
 
         // Validar solicitud aprobada
         var solicitud = (await _unitOfWork.Repository<Solicitude>()
-                .FindAsync(s => s.IdEstudiante == dto.IdEstudiante && s.IdProyecto == dto.IdProyecto && s.Estado == "Aprobado"))
+                .FindAsync(s =>
+                    s.IdEstudiante == dto.IdEstudiante && s.IdProyecto == dto.IdProyecto && s.Estado == "Aprobado"))
             .FirstOrDefault();
 
         if (solicitud == null)
@@ -104,7 +105,7 @@ public class EntregaController : ControllerBase
             entrega.Rendimiento
         });
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetEntregas()
     {

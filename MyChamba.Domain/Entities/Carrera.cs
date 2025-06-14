@@ -2,7 +2,7 @@
 
 namespace MyChamba.Infrastructure.Models;
 
-public partial class Carrera
+public class Carrera
 {
     public uint Id { get; set; }
 

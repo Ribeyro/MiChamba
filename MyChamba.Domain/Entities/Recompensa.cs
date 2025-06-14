@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace MyChamba.Models;
 
-namespace MyChamba.Models;
-
-public partial class Recompensa
+public class Recompensa
 {
     public uint Id { get; set; }
 
@@ -23,5 +20,6 @@ public partial class Recompensa
 
     public virtual RecompensasCertificado? RecompensasCertificado { get; set; }
 
-    public virtual ICollection<RecompensasEconomica> RecompensasEconomicas { get; set; } = new List<RecompensasEconomica>();
+    public virtual ICollection<RecompensasEconomica> RecompensasEconomicas { get; set; } =
+        new List<RecompensasEconomica>();
 }

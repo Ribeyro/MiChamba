@@ -21,7 +21,7 @@ public class RecompensaController : ControllerBase
     {
         var estudiante = await _unitOfWork.Repository<Estudiante>().FindAsync(e => e.IdUsuario == dto.IdEstudiante);
         var proyecto = await _unitOfWork.Repository<Proyecto>().FindAsync(p => p.Id == dto.IdProyecto);
-        
+
         if (!estudiante.Any() || !proyecto.Any())
             return NotFound("Estudiante o proyecto no encontrado.");
 
@@ -52,7 +52,8 @@ public class RecompensaController : ControllerBase
         await _unitOfWork.Repository<Recompensa>().AddAsync(recompensa);
         await _unitOfWork.Complete();
 
-        if (dto.IdTipoRecompensa == 2 && dto.TipoCertificado != null && dto.Archivo != null && dto.FechaEmision.HasValue)
+        if (dto.IdTipoRecompensa == 2 && dto.TipoCertificado != null && dto.Archivo != null &&
+            dto.FechaEmision.HasValue)
         {
             var certificado = new RecompensasCertificado
             {
@@ -137,7 +138,7 @@ public class RecompensaController : ControllerBase
 
         return Ok("Recompensa económica agregada correctamente.");
     }
-    
+
     // GET: api/recompensas
     [HttpGet]
     public async Task<ActionResult<IEnumerable<RecompensaDto>>> GetAll()
@@ -203,7 +204,7 @@ public class RecompensaController : ControllerBase
             RecompensaEconomica = economicaDto
         });
     }
-    
+
     [HttpPut("economica/{id}")]
     public async Task<IActionResult> ActualizarRecompensaEconomica(uint id, [FromBody] RecompensaEconomicaUpdateDto dto)
     {
@@ -224,7 +225,7 @@ public class RecompensaController : ControllerBase
             return BadRequest("El método de pago no puede estar vacío.");
 
         // Actualizar campos permitidos
-        actual.Monto = dto.Monto;  // Aumentar o mantener
+        actual.Monto = dto.Monto; // Aumentar o mantener
         actual.MetodoPago = dto.MetodoPago;
         actual.Estado = dto.Estado;
 
@@ -233,6 +234,4 @@ public class RecompensaController : ControllerBase
 
         return Ok("Recompensa económica actualizada correctamente.");
     }
-
 }
-

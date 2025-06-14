@@ -1,4 +1,3 @@
-using MyChamba.Domain.Entities;
 using MyChamba.DTOs.Proyecto;
 
 namespace MyChamba.Application.Common.Interfaces.Persistence;

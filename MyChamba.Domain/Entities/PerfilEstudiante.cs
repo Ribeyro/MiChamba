@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace MyChamba.Models;
 
-namespace MyChamba.Models;
-
-public partial class PerfilEstudiante
+public class PerfilEstudiante
 {
     public ulong IdEstudiante { get; set; }
 
