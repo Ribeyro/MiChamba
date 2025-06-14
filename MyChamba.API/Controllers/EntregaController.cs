@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using MyChamba.Data.UnitofWork;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.DTOs.Proyectos;
 using MyChamba.Infrastructure.Models;
 using MyChamba.Models;

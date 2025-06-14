@@ -1,8 +1,7 @@
-
 using Microsoft.EntityFrameworkCore;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Data;
-using MyChamba.Domain.Entities;
-using MyChamba.Domain.Interface;
+using MyChamba.DTOs.Proyecto;
 
 namespace MyChamba.Infrastructure.Data.Repositories;
 

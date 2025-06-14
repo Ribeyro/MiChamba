@@ -1,17 +1,12 @@
-using MyChamba.Domain.Interface;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.DTOs.Proyecto;
 using MyChamba.Services.Interfaces;
 
 namespace MyChamba.Application.Services.Implementations;
 
-public class StudentService : IStudentService
+public class StudentService (IStudentRepository _studentRepository) : IStudentService
 {
-    private readonly IStudentRepository _studentRepository;
-
-    public StudentService(IStudentRepository studentRepository)
-    {
-        _studentRepository = studentRepository;
-    }
+    
 
     public async Task<List<ProyectoCompletoDto>> ObtenerProyectosDisponiblesAsync()
     {

@@ -1,6 +1,4 @@
-using MyChamba.Application.Services.Interfaces;
-using MyChamba.Data.Interface;
-using MyChamba.Data.UnitofWork;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.DTOs.Proyecto;
 using MyChamba.Infrastructure.Models;
 using MyChamba.Models;
@@ -14,24 +12,19 @@ using MyChamba.Models;
 
 namespace MyChamba.Services.Implementations;
 
+public interface IProyectoService
+{
+    Task<IEnumerable<ProyectoEmpresaDTO>> ListarPorEmpresaAsync(uint idEmpresa);
+    Task<bool> CrearProyectoAsync(CrearProyectoDTO dto);
+}
+
 /// <summary>
 /// Servicio para gestionar la lógica relacionada con los proyectos de la empresa.
 /// Incluye operaciones para listar y crear proyectos.
 /// </summary>
-public class ProyectoService : IProyectoService
+public class ProyectoService (IProyectoRepository _proyectoRepository, IUnitOfWork _unitOfWork): IProyectoService
 {
-    private readonly IProyectoRepository _proyectoRepository;
-    private readonly IUnitOfWork _unitOfWork;
-
-    /// <summary>
-    /// Constructor que recibe las dependencias necesarias.
-    /// </summary>
-    public ProyectoService(IProyectoRepository proyectoRepository, IUnitOfWork unitOfWork)
-    {
-        _proyectoRepository = proyectoRepository;
-        _unitOfWork = unitOfWork;
-    }
-
+    
     /// <summary>
     /// Lista todos los proyectos creados por una empresa específica,
     /// incluyendo detalles de los postulantes (estudiantes, universidad, carrera).
@@ -40,9 +33,26 @@ public class ProyectoService : IProyectoService
     /// <returns>Listado de proyectos con datos enriquecidos</returns>
     public async Task<IEnumerable<ProyectoEmpresaDTO>> ListarPorEmpresaAsync(uint idEmpresa)
     {
-        return await _proyectoRepository.ObtenerProyectosPorEmpresaAsync(idEmpresa);
-    }
+        var proyectosRaw = await _proyectoRepository.ObtenerProyectosPorEmpresaAsync(idEmpresa);
 
+        var proyectosMapeados = proyectosRaw.Select(p => new ProyectoEmpresaDTO
+        {
+            Id = p.Id,
+            Nombre = p.Nombre,
+            Descripcion = p.Descripcion,
+            FechaLimite = p.FechaLimite,
+            NumeroPostulaciones = p.NumeroPostulaciones,
+            Postulantes = p.Postulantes.Select(post => new PostulanteProyectoDTO
+            {
+                IdEstudiante = post.IdEstudiante, // o post.IdUsuario si ya migraste
+                Nombre = $"{post.Nombre} {post.Apellido}", // unir campos si vienen separados
+                Universidad = post.Universidad,
+                Carrera = post.Carrera
+            }).ToList()
+        });
+
+        return proyectosMapeados;
+    }
     /// <summary>
     /// Crea un nuevo proyecto después de validar la empresa, tipo de recompensa y habilidades.
     /// </summary>

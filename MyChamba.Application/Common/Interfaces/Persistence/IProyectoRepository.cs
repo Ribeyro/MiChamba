@@ -1,6 +1,6 @@
-using MyChamba.Domain.Entities;
+using MyChamba.DTOs.Proyecto;
 
-namespace MyChamba.Data.Interface;
+namespace MyChamba.Application.Common.Interfaces.Persistence;
 
 public interface IProyectoRepository
 {

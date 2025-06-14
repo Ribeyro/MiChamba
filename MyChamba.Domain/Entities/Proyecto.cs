@@ -1,19 +1,36 @@
-using MyChamba.Models;
+﻿using System;
+using System.Collections.Generic;
+using MyChamba.Infrastructure.Models;
 
-namespace MyChamba.Domain.Entities
+namespace MyChamba.Models;
+
+public partial class Proyecto
 {
-    public class Proyecto
-    {
-        public uint Id { get; set; }
-        public string Nombre { get; set; } = string.Empty;
-        public string Descripcion { get; set; } = string.Empty;
-        public DateTime FechaLimite { get; set; }
+    public uint Id { get; set; }
 
-        // En lugar de un string, es mejor tener una relación con una entidad Recompensa
-        public uint? IdTipoRecompensa { get; set; }
-        public TipoRecompensa? TipoRecompensa { get; set; }
+    public string Nombre { get; set; } = null!;
 
-        // Relación con habilidades
-        public ICollection<Habilidad> Habilidades { get; set; } = new List<Habilidad>();
-    }
+    public string Descripcion { get; set; } = null!;
+
+    public DateTime FechaLimite { get; set; }
+
+    public bool Estado { get; set; }
+
+    public int NumeroParticipantes { get; set; }
+
+    public ulong IdEmpresa { get; set; }
+
+    public uint IdTipoRecompensa { get; set; }
+
+    public virtual ICollection<EntregasProyecto> EntregasProyectos { get; set; } = new List<EntregasProyecto>();
+
+    public virtual Empresa IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual TipoRecompensa IdTipoRecompensaNavigation { get; set; } = null!;
+
+    public virtual ICollection<Recompensa> Recompensas { get; set; } = new List<Recompensa>();
+
+    public virtual ICollection<Solicitude> Solicitudes { get; set; } = new List<Solicitude>();
+
+    public virtual ICollection<Habilidade> IdHabilidads { get; set; } = new List<Habilidade>();
 }

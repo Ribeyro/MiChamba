@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using MyChamba.Application.Services.Interfaces;
-using MyChamba.DTOs.Student;
 using MyChamba.Services.Interfaces;
 
 namespace MyChamba.Controllers

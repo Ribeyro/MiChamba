@@ -1,10 +1,8 @@
 using MyChamba.Domain.Models;
-using MyChamba.Models;
 
-namespace MyChamba.Data.UnitofWork;
+namespace MyChamba.Application.Common.Interfaces.Persistence;
 
 public interface IUsuarioRepository
 {
     Task<Usuario?> GetByEmailAsync(string email);
-
 }

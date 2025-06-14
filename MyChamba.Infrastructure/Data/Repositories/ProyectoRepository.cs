@@ -1,20 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Data;
-using MyChamba.Data.Interface;
-using MyChamba.Domain.Entities;
-
+using MyChamba.DTOs.Proyecto;
 
 namespace MyChamba.Infrastructure.Data.Repositories;
 
-public class ProyectoRepository: IProyectoRepository
+public class ProyectoRepository (MyChambaContext _context): IProyectoRepository
 {
-    private readonly MyChambaContext _context;
-
-    public ProyectoRepository(MyChambaContext context)
-    {
-        _context = context;
-    }
-
     public async Task<IEnumerable<ProyectoEmpresaDTO>> ObtenerProyectosPorEmpresaAsync(uint idEmpresa)
     {
         var proyectos = await _context.Proyectos
@@ -37,12 +29,13 @@ public class ProyectoRepository: IProyectoRepository
             Postulantes = p.Solicitudes.Select(s => new PostulanteProyectoDTO
             {
                 IdEstudiante = (uint)s.IdEstudiante,
-                Nombre = s.IdEstudianteNavigation.Nombre,
-                Apellido = s.IdEstudianteNavigation.Apellido,
-                Carrera = s.IdEstudianteNavigation.IdCarreraNavigation.Nombre,
+                Nombre = $"{s.IdEstudianteNavigation.Nombre} {s.IdEstudianteNavigation.Apellido}",
                 Universidad = s.IdEstudianteNavigation.IdUniversidadNavigation.Nombre,
+                Carrera = s.IdEstudianteNavigation.IdCarreraNavigation.Nombre,
                 EstadoSolicitud = s.Estado
             }).ToList()
+
         }).ToList();
     }
+
 }

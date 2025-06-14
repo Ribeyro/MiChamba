@@ -1,17 +1,7 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using MyChamba.Configuration;
-using MyChamba.Data;
-using MyChamba.Data.Interface;
-using MyChamba.Data.UnitofWork;
-using MyChamba.Domain.Interface;
 using MyChamba.Extensions;
-using MyChamba.Services.Implementations;
-using MyChamba.Services.Interfaces;
-using MyChamba.Helpers;
-using MyChamba.Infrastructure.Data.Repositories;
 using MyChamba.Middlewares;
-using MyChamba.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

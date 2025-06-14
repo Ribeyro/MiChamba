@@ -1,13 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Application.Services.Implementations;
-using MyChamba.Application.Services.Interfaces;
-using MyChamba.Data.Interface;
-using MyChamba.Data.Repositories;
 using MyChamba.Data.UnitofWork;
-using MyChamba.Domain.Interface;
 using MyChamba.Domain.Models;
-using MyChamba.Helpers;
 using MyChamba.Infrastructure.Configuration;
 using MyChamba.Infrastructure.Data.Repositories;
 using MyChamba.Repositories;

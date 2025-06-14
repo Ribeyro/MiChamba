@@ -1,4 +1,4 @@
-namespace MyChamba.Domain.Entities;
+namespace MyChamba.Domain.DTOs;
 
 public class PostulanteDto
 {

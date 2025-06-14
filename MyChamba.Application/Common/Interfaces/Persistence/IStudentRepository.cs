@@ -1,6 +1,7 @@
 using MyChamba.Domain.Entities;
+using MyChamba.DTOs.Proyecto;
 
-namespace MyChamba.Domain.Interface;
+namespace MyChamba.Application.Common.Interfaces.Persistence;
 
 public interface IStudentRepository
 {

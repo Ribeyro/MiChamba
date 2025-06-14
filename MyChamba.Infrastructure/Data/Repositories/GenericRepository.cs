@@ -1,20 +1,19 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using MyChamba.Data.Interface;
+using MyChamba.Application.Common.Interfaces.Persistence;
 
 namespace MyChamba.Data.Repository
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity>  : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly MyChambaContext _context;
-        private readonly DbSet<TEntity> _dbSet;
+        protected readonly MyChambaContext _context;
+        protected readonly DbSet<TEntity> _dbSet;
 
         public GenericRepository(MyChambaContext context)
         {
             _context = context;
             _dbSet = _context.Set<TEntity>();
         }
-
         public async Task<TEntity?> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using MyChamba.Application.Services.Interfaces;
 using MyChamba.DTOs.Proyecto;
-using MyChamba.Services.Interfaces;
+using MyChamba.Services.Implementations;
 
 namespace MyChamba.Controllers;
 
@@ -44,7 +43,7 @@ public class ProyectosController : ControllerBase
             var resultado = await _proyectoService.CrearProyectoAsync(dto);
 
             if (resultado)
-                return Ok(new { mensaje = "Proyecto creado correctamente." });
+                return Ok(new { mensaje = "ProyectoDto creado correctamente." });
 
             return BadRequest(new { mensaje = "No se pudo crear el proyecto." });
         }

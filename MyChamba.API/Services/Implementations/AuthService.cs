@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Data.UnitofWork;
 using MyChamba.DTOs.Auth;
 using MyChamba.Services.Interfaces;

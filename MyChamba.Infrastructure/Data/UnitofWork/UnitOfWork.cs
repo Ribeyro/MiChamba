@@ -1,5 +1,5 @@
 using System.Collections;
-using MyChamba.Data.Interface;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Data.Repository;
 
 namespace MyChamba.Data.UnitofWork

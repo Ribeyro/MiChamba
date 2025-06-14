@@ -1,23 +1,29 @@
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Application.DTOs.Student;
-using MyChamba.Application.Services.Interfaces;
-using MyChamba.Domain.Interface;
 using MyChamba.Models;
 using MyChamba.Services.Interfaces;
 
 namespace MyChamba.Services.Implementations
 {
-    public class PostulanteService : IPostulanteService
+    public class PostulanteService (IPostulanteRepository _postulanteRepository): IPostulanteService
     {
-        private readonly IPostulanteRepository _postulanteRepository;
-
-        public PostulanteService(IPostulanteRepository postulanteRepository)
-        {
-            _postulanteRepository = postulanteRepository;
-        }
-
         public async Task<List<PostulanteDto>> ObtenerPostulantesPorProyectoAsync(uint idProyecto)
         {
-            return await _postulanteRepository.ObtenerPostulantesPorProyectoAsync(idProyecto);
+            var postulantes = await _postulanteRepository.ObtenerPostulantesPorProyectoAsync(idProyecto);
+
+            var mapped = postulantes.Select(p => new PostulanteDto
+            {
+                IdSolicitud = p.IdSolicitud,
+                IdUsuario = p.IdUsuario,
+                NombreCompleto = p.NombreCompleto,
+                Email = p.Email,
+                Universidad = p.Universidad,
+                Carrera = p.Carrera,
+                AcercaDe = p.AcercaDe,
+                EstadoSolicitud = p.EstadoSolicitud
+            }).ToList();
+
+            return mapped;
         }
 
         public async Task AceptarPostulanteAsync(uint idSolicitud)

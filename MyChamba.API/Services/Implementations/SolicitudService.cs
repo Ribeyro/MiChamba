@@ -1,4 +1,4 @@
-using MyChamba.Data.UnitofWork;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.DTOs.Solicitud;
 using MyChamba.Infrastructure.Models;
 using MyChamba.Models;
@@ -52,7 +52,7 @@ public class SolicitudService : ISolicitudService
         
         
         // Obtener ID del usuario empresa dueña del proyecto
-        ulong idEmpresa = proyecto.IdEmpresa; // Asegúrate que el modelo Proyecto tenga esta propiedad
+        ulong idEmpresa = proyecto.IdEmpresa; // Asegúrate que el modelo ProyectoDto tenga esta propiedad
 
         // Crear la notificación
         await _notificacionService.CrearNotificacionNuevaSolicitudAsync(solicitud, idEmpresa, dto.ResumenHabilidades);
