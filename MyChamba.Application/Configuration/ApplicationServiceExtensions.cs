@@ -22,12 +22,10 @@ public static class ApplicationServiceExtensions
         // Casos de uso (Application Layer)
         services.AddScoped<IJwtGenerator, JwtGenerator>();
         services.AddScoped<ILoginUseCase, LoginUseCase>();
-        services.AddScoped<IListarProyectosPorEmpresaUseCase, ListarRetosDisponiblesUseCase>();
         services.AddScoped<ICrearNotificacionUseCase, CrearNotificacionUseCase>();
         services.AddScoped<IObtenerRetosDisponiblesUseCase, ObtenerRetosDisponiblesUseCase>();
         services.AddScoped<IEstudianteProfileUseCase, EstudianteProfileUseCase>();
         services.AddScoped<IEmpresaProfileUseCase, EmpresaProfileUseCase>();
-        
         return services;
     }
 }
