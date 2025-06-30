@@ -10,3 +10,15 @@ C:\Users\ribey\RiderProjects\MyChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.
 C:\Users\ribey\RiderProjects\MyChamba\MyChamba.Domain\obj\Debug\net8.0\refint\MyChamba.Domain.dll
 C:\Users\ribey\RiderProjects\MyChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.Domain.pdb
 C:\Users\ribey\RiderProjects\MyChamba\MyChamba.Domain\obj\Debug\net8.0\ref\MyChamba.Domain.dll
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\bin\Debug\net8.0\MyChamba.Domain.deps.json
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\bin\Debug\net8.0\MyChamba.Domain.dll
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\bin\Debug\net8.0\MyChamba.Domain.pdb
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.Domain.AssemblyInfoInputs.cache
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.Domain.AssemblyInfo.cs
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.Domain.csproj.CoreCompileInputs.cache
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.Domain.sourcelink.json
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.Domain.dll
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\refint\MyChamba.Domain.dll
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\MyChamba.Domain.pdb
+D:\2025-A\PROYECTO_BACKEND\MiChamba\MyChamba.Domain\obj\Debug\net8.0\ref\MyChamba.Domain.dll

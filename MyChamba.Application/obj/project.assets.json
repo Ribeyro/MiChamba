@@ -2017,19 +2017,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ribey\\.nuget\\packages\\": {}
+    "C:\\Users\\LINDA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Application\\MyChamba.Application.csproj",
+      "projectUniqueName": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Application\\MyChamba.Application.csproj",
       "projectName": "MyChamba.Application",
-      "projectPath": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Application\\MyChamba.Application.csproj",
-      "packagesPath": "C:\\Users\\ribey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Application\\obj\\",
+      "projectPath": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Application\\MyChamba.Application.csproj",
+      "packagesPath": "C:\\Users\\LINDA\\.nuget\\packages\\",
+      "outputPath": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ribey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\LINDA\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -2041,8 +2041,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Domain\\MyChamba.Domain.csproj": {
-              "projectPath": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Domain\\MyChamba.Domain.csproj"
+            "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Domain\\MyChamba.Domain.csproj": {
+              "projectPath": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Domain\\MyChamba.Domain.csproj"
             }
           }
         }
@@ -2091,26 +2091,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\LINDA\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
