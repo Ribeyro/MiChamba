@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0/D/gn642PHpHnMIlyCDJMd4tcWGuy0l4N2AJoV89TE=",
+  "Hash": "e4yC0VRn8kweJR03RuuipBSOpstW+o0wztbLTBSqogw=",
   "Source": "MyChamba.API",
   "BasePath": "_content/MyChamba.API",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "MyChamba.API\\wwwroot",
       "Source": "MyChamba.API",
-      "ContentRoot": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\",
+      "ContentRoot": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\",
       "BasePath": "_content/MyChamba.API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\css\\site.css",
+      "Identity": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\css\\site.css",
       "SourceId": "MyChamba.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\",
+      "ContentRoot": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\",
       "BasePath": "_content/MyChamba.API",
       "RelativePath": "css/site#[.{fingerprint}]?.css",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\favicon.ico",
+      "Identity": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\favicon.ico",
       "SourceId": "MyChamba.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\",
+      "ContentRoot": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\",
       "BasePath": "_content/MyChamba.API",
       "RelativePath": "favicon#[.{fingerprint}]?.ico",
       "AssetKind": "All",
@@ -62,7 +62,7 @@
   "Endpoints": [
     {
       "Route": "css/site.9ejcgjs1ad.css",
-      "AssetFile": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\css\\site.css",
+      "AssetFile": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -83,7 +83,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 30 Jun 2025 01:12:03 GMT"
+          "Value": "Mon, 30 Jun 2025 05:20:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -107,7 +107,7 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\css\\site.css",
+      "AssetFile": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -128,7 +128,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 30 Jun 2025 01:12:03 GMT"
+          "Value": "Mon, 30 Jun 2025 05:20:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -144,7 +144,7 @@
     },
     {
       "Route": "favicon.61n19gt1b8.ico",
-      "AssetFile": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\favicon.ico",
+      "AssetFile": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\favicon.ico",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -165,7 +165,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 30 Jun 2025 01:12:03 GMT"
+          "Value": "Mon, 30 Jun 2025 05:20:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -189,7 +189,7 @@
     },
     {
       "Route": "favicon.ico",
-      "AssetFile": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\wwwroot\\favicon.ico",
+      "AssetFile": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\wwwroot\\favicon.ico",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -210,7 +210,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 30 Jun 2025 01:12:03 GMT"
+          "Value": "Mon, 30 Jun 2025 05:20:50 GMT"
         },
         {
           "Name": "Cache-Control",

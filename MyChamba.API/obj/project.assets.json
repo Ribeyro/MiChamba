@@ -5724,19 +5724,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ribey\\.nuget\\packages\\": {}
+    "C:\\Users\\LINDA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\MyChamba.API.csproj",
+      "projectUniqueName": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\MyChamba.API.csproj",
       "projectName": "MyChamba.API",
-      "projectPath": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\MyChamba.API.csproj",
-      "packagesPath": "C:\\Users\\ribey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.API\\obj\\",
+      "projectPath": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\MyChamba.API.csproj",
+      "packagesPath": "C:\\Users\\LINDA\\.nuget\\packages\\",
+      "outputPath": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ribey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\LINDA\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -5748,11 +5748,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Application\\MyChamba.Application.csproj": {
-              "projectPath": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Application\\MyChamba.Application.csproj"
+            "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Application\\MyChamba.Application.csproj": {
+              "projectPath": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Application\\MyChamba.Application.csproj"
             },
-            "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Infrastructure\\MyChamba.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\ribey\\RiderProjects\\MyChamba\\MyChamba.Infrastructure\\MyChamba.Infrastructure.csproj"
+            "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Infrastructure\\MyChamba.Infrastructure.csproj": {
+              "projectPath": "D:\\2025-A\\PROYECTO_BACKEND\\MiChamba\\MyChamba.Infrastructure\\MyChamba.Infrastructure.csproj"
             }
           }
         }
@@ -5817,24 +5817,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5843,7 +5825,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\LINDA\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
