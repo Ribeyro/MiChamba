@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Application.UseCases.Auth.Jwt;
 using MyChamba.Application.UseCases.Auth.Login;
+using MyChamba.Application.UseCases.Certificado.ObtenerCertificadoporEstudiante;
 using MyChamba.Application.UseCases.Estudiantes;
 using MyChamba.Application.UseCases.Estudiantes.ObtenerRetosDisponibles;
 using MyChamba.Application.UseCases.Estudiantes.PerfilEstudiante;
@@ -33,7 +34,6 @@ public static class ApplicationServiceExtensions
         services.AddScoped<IPostularEstudianteUseCase, PostularEstudianteUseCase>();
         services.AddScoped<ICrearUsuarioUseCase, CrearUsuarioUseCase>();
         services.AddScoped<IObtenerRetosDisponiblesUseCase, ObtenerRetosDisponiblesUseCase>();
-        
         services.AddScoped<IEstudianteProfileUseCase, EstudianteProfileUseCase>();
         return services;
     }
