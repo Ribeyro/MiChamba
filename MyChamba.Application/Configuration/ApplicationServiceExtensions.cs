@@ -5,13 +5,10 @@ using MyChamba.Application.UseCases.Auth.Jwt;
 using MyChamba.Application.UseCases.Auth.Login;
 using MyChamba.Application.UseCases.Certificado.ObtenerCertificadoporEstudiante;
 using MyChamba.Application.UseCases.Estudiantes;
+using MyChamba.Application.UseCases.Empresas.ObtenerDatosEmpresa;
 using MyChamba.Application.UseCases.Estudiantes.ObtenerRetosDisponibles;
 using MyChamba.Application.UseCases.Estudiantes.PerfilEstudiante;
 using MyChamba.Application.UseCases.Notificaciones.CrearNotificacion;
-using MyChamba.Application.UseCases.Postulaciones.AceptarPostulante;
-using MyChamba.Application.UseCases.Postulaciones.ObtenerPostulantes;
-using MyChamba.Application.UseCases.Postulaciones.PostularEstudiante;
-using MyChamba.Application.UseCases.Usuarios.CrearUsuario;
 using MyChamba.Domain.Models;
 using MyChamba.Services.Implementations;
 
@@ -29,12 +26,10 @@ public static class ApplicationServiceExtensions
         services.AddScoped<ILoginUseCase, LoginUseCase>();
         services.AddScoped<IListarProyectosPorEmpresaUseCase, ListarRetosDisponiblesUseCase>();
         services.AddScoped<ICrearNotificacionUseCase, CrearNotificacionUseCase>();
-        services.AddScoped<IAceptarPostulanteUseCase, AceptarPostulanteUseCase>();
-        services.AddScoped<IObtenerPostulantesPorProyectoUseCase, ObtenerPostulantesPorProyectoUseCase>();
-        services.AddScoped<IPostularEstudianteUseCase, PostularEstudianteUseCase>();
-        services.AddScoped<ICrearUsuarioUseCase, CrearUsuarioUseCase>();
         services.AddScoped<IObtenerRetosDisponiblesUseCase, ObtenerRetosDisponiblesUseCase>();
         services.AddScoped<IEstudianteProfileUseCase, EstudianteProfileUseCase>();
+        services.AddScoped<IEmpresaProfileUseCase, EmpresaProfileUseCase>();
+        
         return services;
     }
 }

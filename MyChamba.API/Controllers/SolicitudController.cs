@@ -1,35 +1,18 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MyChamba.Application.UseCases.Postulaciones.PostularEstudiante;
+using MyChamba.Application.UseCases.Postulaciones.Commands;
 using MyChamba.DTOs.Solicitud;
 
 namespace MyChamba.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class SolicitudesController : ControllerBase
+public class SolicitudesController (IMediator _mediator) : ControllerBase
 {
-    private readonly IPostularEstudianteUseCase _solicitudService;
-
-    public SolicitudesController(IPostularEstudianteUseCase solicitudService)
-    {
-        _solicitudService = solicitudService;
-    }
-
-    [HttpPost]
+    [HttpPost("postular")]
     public async Task<IActionResult> Postular([FromBody] CrearSolicitudDto dto)
     {
-        try
-        {
-            var resultado = await _solicitudService.PostularEstudianteAsync(dto);
-
-            if (resultado)
-                return Ok(new { mensaje = "Postulación registrada correctamente." });
-
-            return BadRequest(new { mensaje = "No se pudo registrar la postulación." });
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(new { mensaje = ex.Message });
-        }
+        var resultado = await _mediator.Send(new PostularEstudianteCommand(dto));
+        return Ok(resultado);
     }
 }

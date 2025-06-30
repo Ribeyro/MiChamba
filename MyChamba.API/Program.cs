@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // 🔧 Agrega primero los servicios de infraestructura (repos, DB, UnitOfWork, etc.)
-//builder.Services.AddApplicationServices(); // Sin parámetros
+builder.Services.AddApplicationServices(); // Sin parámetros
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddProjectServices(builder.Configuration);
 // 🔧 Luego los servicios de aplicación (casos de uso, JWT, etc.)
