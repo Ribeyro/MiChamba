@@ -1,56 +1,25 @@
-# Archivos y carpetas generados por Rider
-.idea/
+# Etapa 1: Build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
 
-# Archivos de compilación
-bin/
-obj/
-**/bin/
-**/obj/
+# Copiar solución y proyecto
+COPY MyChamba.sln .
+COPY MyChamba.API/*.csproj ./MyChamba.API/
 
-# Otros archivos temporales
-*.log
-*.tmp
-*.cache
-*.user
+# Restaurar dependencias
+RUN dotnet restore ./MyChamba.API/MyChamba.API.csproj
 
-# Ignorar archivos y cachés generados automáticamente por .NET
-*.editorconfig
+# Copiar todo el código fuente
+COPY MyChamba.API/. ./MyChamba.API/
 
-# Archivos específicos generados por Rider o NuGet
-*.nuget.*
-*.dgspec.json
-*.props
-*.assets.cache
-*.AssemblyInfo.*
-*.AssemblyReference.*
-*.GeneratedMSBuildEditorConfig.*
-*.csproj.nuget.*
-*rider.project.*
+# Publicar en modo Release
+WORKDIR /app/MyChamba.API
+RUN dotnet publish -c Release -o /out
 
-# Configuraciones locales sensibles
-appsettings.Development.json
-appsettings.Local.json
-.env
-secrets.json
+# Etapa 2: Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /out ./
 
-# Archivos de configuración de usuario
-*.sln.ide
-*.sln.ide.*
-
-# Otros archivos y carpetas comunes
-logs/
-.vs/
-*.suo
-*.userosscache
-publish/
-coverage/
-node_modules/
-
-# Ignorar contenido de wwwroot generado, pero mantener carpeta base
-/wwwroot/*
-!/wwwroot/favicon.ico
-!/wwwroot/css/
-/wwwroot/lib/
-
-# (Opcional) Ignorar migraciones si se generan por desarrollador
-# Migrations/
+# Punto de entrada de la aplicación
+ENTRYPOINT ["dotnet", "MyChamba.API.dll"]
