@@ -1,26 +1,20 @@
+using MediatR;
 using MyChamba.Application.Common.Interfaces.Persistence;
-using MyChamba.Application.DTOs.Student;
 using MyChamba.Models;
 
-namespace MyChamba.Application.UseCases.Postulaciones.AceptarPostulante;
+namespace MyChamba.Application.UseCases.Postulaciones.Commands;
 
-
-public interface IAceptarPostulanteUseCase
+public class AceptarPostulanteCommandHandler (IPostulanteRepository _postulanteRepository): IRequestHandler<AceptarPostulanteCommand, Unit>
 {
-    Task ExecuteAsync(uint idSolicitud);
-}
-
-public class AceptarPostulanteUseCase(IPostulanteRepository _postulanteRepository)
-    : IAceptarPostulanteUseCase
-{
-    public async Task ExecuteAsync(uint idSolicitud)
+    
+    public async Task<Unit> Handle(AceptarPostulanteCommand command, CancellationToken cancellationToken)
     {
-        var solicitudAceptada = await _postulanteRepository.ObtenerSolicitudPorIdAsync(idSolicitud);
+        var solicitudAceptada = await _postulanteRepository.ObtenerSolicitudPorIdAsync(command.IdSolicitud);
         if (solicitudAceptada == null)
             throw new Exception("Solicitud no encontrada.");
 
-        var otrasSolicitudes =
-            await _postulanteRepository.ObtenerOtrasSolicitudesDelProyectoAsync(solicitudAceptada.IdProyecto, idSolicitud);
+        var otrasSolicitudes = await _postulanteRepository
+            .ObtenerOtrasSolicitudesDelProyectoAsync(solicitudAceptada.IdProyecto, command.IdSolicitud);
 
         solicitudAceptada.Estado = "aceptada";
         _postulanteRepository.ActualizarSolicitud(solicitudAceptada);
@@ -31,6 +25,7 @@ public class AceptarPostulanteUseCase(IPostulanteRepository _postulanteRepositor
         {
             s.Estado = "rechazada";
             _postulanteRepository.ActualizarSolicitud(s);
+
             notificaciones.Add(new Notificacione
             {
                 IdReceptor = s.IdEstudiante,
@@ -54,5 +49,7 @@ public class AceptarPostulanteUseCase(IPostulanteRepository _postulanteRepositor
 
         _postulanteRepository.AgregarNotificaciones(notificaciones);
         await _postulanteRepository.GuardarCambiosAsync();
+
+        return Unit.Value;
     }
 }
