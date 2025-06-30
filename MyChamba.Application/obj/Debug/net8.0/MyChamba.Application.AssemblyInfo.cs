@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyChamba.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aec8ac829f94c984e782cc8bd58df368a1ba4df0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd07aaa21c0efc7e244dc8101a6a978d1d7e5c72")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyChamba.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyChamba.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
