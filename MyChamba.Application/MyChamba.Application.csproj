@@ -17,4 +17,10 @@
         <ProjectReference Include="..\MyChamba.Domain\MyChamba.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="UseCases\Proyectos\Commands\" />
+      <Folder Include="UseCases\Proyectos\Queries\" />
+      <Folder Include="UseCases\Usuarios\Queries\" />
+    </ItemGroup>
+
 </Project>
