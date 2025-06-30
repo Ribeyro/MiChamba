@@ -10,7 +10,6 @@ public static class ServiceCollectionExtensions
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(typeof(AssemblyReference).Assembly)
         );
-
         // Aquí puedes agregar más servicios comunes de la capa Application si los necesitas
 
         return services;
