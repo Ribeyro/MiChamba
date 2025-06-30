@@ -25,6 +25,8 @@ public static class InfrastructureServicesExtensions
         services.AddScoped<IProyectoRepository, ProyectoRepository>();
         services.AddScoped<IPostulanteRepository, PostulanteRepository>();
         services.AddScoped<IStudentRepository, StudentRepository>();
+        services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+
 
         return services;
     }
