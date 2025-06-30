@@ -4,16 +4,16 @@ WORKDIR /app
 
 # Copiar solución y proyecto
 COPY MyChamba.sln .
-COPY MyChamba/*.csproj ./MyChamba/
+COPY MyChamba.API/*.csproj ./MyChamba.API/
 
 # Restaurar dependencias
-RUN dotnet restore
+RUN dotnet restore ./MyChamba.API/MyChamba.API.csproj
 
 # Copiar el resto del código
-COPY MyChamba/. ./MyChamba/
+COPY MyChamba.API/. ./MyChamba.API/
 
 # Publicar en modo Release
-WORKDIR /app/MyChamba
+WORKDIR /app/MyChamba.API
 RUN dotnet publish -c Release -o /out
 
 # Etapa 2: Runtime con imagen más ligera
@@ -26,4 +26,4 @@ ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 
 # Arrancar la app
-ENTRYPOINT ["dotnet", "MyChamba.dll"]
+ENTRYPOINT ["dotnet", "MyChamba.API.dll"]
