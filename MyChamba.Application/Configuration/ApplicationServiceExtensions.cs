@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Application.UseCases.Auth.Jwt;
 using MyChamba.Application.UseCases.Auth.Login;
+using MyChamba.Application.UseCases.Estudiantes;
 using MyChamba.Application.UseCases.Estudiantes.ObtenerRetosDisponibles;
+using MyChamba.Application.UseCases.Estudiantes.PerfilEstudiante;
 using MyChamba.Application.UseCases.Notificaciones.CrearNotificacion;
 using MyChamba.Application.UseCases.Postulaciones.AceptarPostulante;
 using MyChamba.Application.UseCases.Postulaciones.ObtenerPostulantes;
@@ -30,7 +33,8 @@ public static class ApplicationServiceExtensions
         services.AddScoped<IPostularEstudianteUseCase, PostularEstudianteUseCase>();
         services.AddScoped<ICrearUsuarioUseCase, CrearUsuarioUseCase>();
         services.AddScoped<IObtenerRetosDisponiblesUseCase, ObtenerRetosDisponiblesUseCase>();
-
+        
+        services.AddScoped<IEstudianteProfileUseCase, EstudianteProfileUseCase>();
         return services;
     }
 }
