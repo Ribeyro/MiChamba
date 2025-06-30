@@ -1,24 +1,47 @@
-# Etapa 1: Build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+# Archivos generados por compilación
+**/bin/
+**/obj/
 
-# Copiar solución y archivo csproj
-COPY MyChamba.sln .
-COPY MyChamba.API/*.csproj ./MyChamba.API/
+# Archivos de Rider/JetBrains
+.idea/
+*.sln.DotSettings.user
 
-# Restaurar dependencias
-RUN dotnet restore ./MyChamba.API/MyChamba.API.csproj
+# Archivos temporales del sistema
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
 
-# Copiar todo el código fuente
-COPY MyChamba.API/. ./MyChamba.API/
+# Archivos de publicación y paquetes
+*.publish/
+*.nupkg
+*.snupkg
+*.vs/
 
-# Publicar en modo Release
-WORKDIR /app/MyChamba.API
-RUN dotnet publish -c Release -o /out
+# Configuración y logs
+*.log
 
-# Etapa 2: Runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
-WORKDIR /app
-COPY --from=build /out ./
+# Archivos generados por herramientas
+project.lock.json
+project.fragment.lock.json
 
-ENTRYPOINT ["dotnet", "MyChamba.API.dll"]
+# Archivos de dependencias
+packages/
+*.nuget/
+*.nuspec
+
+# Archivos generados por VS Code o Rider
+.vscode/
+.rider/
+
+# Sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Otros
+*.DS_Store
+*.swp
+*.bak
+*.tmp
