@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using MyChamba.Application.Common.Interfaces.Persistence;
 using MyChamba.Application.UseCases.Auth.Jwt;
 using MyChamba.Application.UseCases.Auth.Login;
-using MyChamba.Application.UseCases.Estudiantes;
 using MyChamba.Application.UseCases.Estudiantes.ObtenerRetosDisponibles;
 using MyChamba.Application.UseCases.Estudiantes.PerfilEstudiante;
 using MyChamba.Application.UseCases.Notificaciones.CrearNotificacion;
